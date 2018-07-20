@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts Boilerplate</title>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="map-greater-china.js"></script>
+</head>
+
+<body>
+    <h1>2017年各省（市）人口流动情况图</h1>
+
+    <!-- Prepare the DOM element to be held by eCharts -->
+    <div id="mychart" style="width: 600px;height:400px;"></div>
+
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('mychart'));
+
+        option = {
+            title: {
+                text: '',
+                subtext: '',
+                left: 'center'
+            },
+            tooltip: {
+                // trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['Data on Area', 'Data on Scatter']
+            },
+            visualMap: {
+                min: -43,
+                max: 70,
+                left: 'left',
+                top: 'bottom',
+                text: ['High', 'Low'],
+                calculable: true,
+                inRange: {
+                    color: ['#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                }
+            },
+            geo: {
+                "map": "china",
+                "roam": true,
+                "center": [
+                    114.31,
+                    30.52
+                ],
+                "zoom": 0.5,
+                "scaleLimit": {
+                    "min": 1,
+                    "max": 3
+                },
+                "label": {
+                    "normal": {
+                        "show": false
+                    },
+                    "emphasis": {
+                        "show": false
+                    }
+                }
+            },
+            series: [{
+                name: 'Data on Scatter',
+                type: 'scatter',
+                map: 'china',
+                roam: false,
+                label: {
+                    normal: {
+                        // Modify to "true" to show the data
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                "coordinateSystem": "geo",
+                "data": [{
+                    "name": "北京南",
+                    "value": [
+                        116.39,
+                        39.87,
+                        492
+                    ]
+                }, {
+                    "name": "福州",
+                    "value": [
+                        119.33,
+                        26.12,
+                        180
+                    ]
+                }]
+            }, {
+                name: 'Data on Area',
+                type: 'map',
+                map: 'china',
+                roam: false,
+                geoIndex: 0,
+                label: {
+                    normal: {
+                        // Modify to "true" to show the data
+                        show: true
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                data: [{
+                    name: '四川',
+                    value: 23
+                }, {
+                    name: '广东',
+                    value: 68.47
+                }, {
+                    name: '浙江',
+                    value: 31.3
+                }, {
+                    name: '新疆',
+                    value: 12.12
+                }, {
+                    name: '江苏',
+                    value: 9.3
+                }, {
+                    name: '安徽',
+                    value: 8.4
+                }, {
+                    name: '陕西',
+                    value: 4.18
+                }, {
+                    name: '西藏',
+                    value: 3.11
+                }, {
+                    name: '宁夏',
+                    value: 1.03
+                }, {
+                    name: '河北',
+                    value: 0.17
+                }, {
+                    name: '海南',
+                    value: 0.63
+                }, {
+                    name: '青海',
+                    value: 0.02
+                }, {
+                    name: '山西',
+                    value: -0.01
+                }, {
+                    name: '甘肃',
+                    value: -0.05
+                }, {
+                    name: '云南',
+                    value: -2.7
+                }, {
+                    name: '湖南',
+                    value: -3.4
+                }, {
+                    name: '江西',
+                    value: -6.7
+                }, {
+                    name: '吉林',
+                    value: -16.33
+                }, {
+                    name: '重庆',
+                    value: 14.83
+                }, {
+                    name: '福建',
+                    value: 2.7
+                }, {
+                    name: '贵州',
+                    value: 2
+                }, {
+                    name: '内蒙古',
+                    value: -0.3
+                }, {
+                    name: '广西',
+                    value: -3.1
+                }, {
+                    name: '辽宁',
+                    value: -7
+                }, {
+                    name: '上海',
+                    value: -8.17
+                }, {
+                    name: '北京',
+                    value: -10.4
+                }, {
+                    name: '黑龙江',
+                    value: -12.02
+                }, {
+                    name: '天津',
+                    value: -13.15
+                }, {
+                    name: '湖北',
+                    value: -15.95
+                }, {
+                    name: '河南',
+                    value: -38
+                }, {
+                    name: '山东',
+                    value: -41.97
+                }, ]
+            }, ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
